@@ -22,7 +22,7 @@ class PaymentAdmin(admin.ModelAdmin):
         'is_overdue_label',
         'days_until_due',
     )
-    search_fields = ('value',)
+    search_fields = ('nome', 'value')
     list_filter = ('due_date', 'pay')
     ordering = ('-due_date',)
 
