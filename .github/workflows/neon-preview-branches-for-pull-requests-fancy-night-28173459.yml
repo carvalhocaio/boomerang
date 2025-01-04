@@ -3,10 +3,7 @@ name: Create/Delete Branch for Pull Request
 on:
   pull_request:
     types:
-      - opened
-      - reopened
       - synchronize
-      - closed
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -29,10 +26,7 @@ jobs:
       db_url_with_pooler: ${{ steps.create_neon_branch_encode.outputs.db_url_with_pooler }}
     needs: setup
     if: |
-      github.event_name == 'pull_request' && (
-      github.event.action == 'synchronize'
-      || github.event.action == 'opened'
-      || github.event.action == 'reopened')
+      github.event_name == 'pull_request' && github.event.action == 'synchronize'
     runs-on: ubuntu-latest
     steps:
       - name: Create Neon Branch
