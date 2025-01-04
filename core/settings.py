@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from decouple import config, Csv
+from decouple import Csv, config
 from dj_database_url import parse as db_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,6 +20,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+INSTALLED_APPS += ['money']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
