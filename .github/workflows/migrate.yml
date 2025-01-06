@@ -1,6 +1,9 @@
 name: Migrate Database on Merge
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     types:
       - closed
