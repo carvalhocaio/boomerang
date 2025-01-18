@@ -5,7 +5,7 @@ from .models import Income, Payment
 
 @admin.register(Income)
 class IncomeAdmin(admin.ModelAdmin):
-    list_display = ('value', 'date', 'origin')
+    list_display = ('value', 'date', 'description', 'origin')
     search_fields = ('origin',)
     list_filter = ('date', 'origin')
     ordering = ('-date',)

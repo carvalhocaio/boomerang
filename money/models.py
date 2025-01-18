@@ -29,6 +29,7 @@ class Income(BaseModel):
         blank=False,
     )
     date = models.DateField(default=timezone.now().replace(day=1))
+    description = models.CharField(max_length=100, null=False, blank=False)
     origin = models.CharField(
         max_length=10, choices=ORIGIN_CHOICES, default=SALARY
     )
@@ -54,7 +55,7 @@ class Payment(BaseModel):
     )
     due_date = models.DateField(default=timezone.now)
     pay = models.BooleanField(default=False)
-    payment_date = models.DateField(default=timezone.now)
+    payment_date = models.DateField(null=True)
 
     def is_overdue(self):
         return timezone.now().date() > self.due_date
